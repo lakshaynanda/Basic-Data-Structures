@@ -179,6 +179,20 @@ public class linkedList {
             return n.data;
         }
     }
+    public void displayReverse()
+    {
+        displayReverseHelper(head);
+        System.out.println(".");
+    }
+    public void displayReverseHelper(Node node)
+    {
+        if(node == null)
+        {
+            return;
+        }
+        displayReverseHelper(node.next);
+        System.out.print(node.data+" -> ");
+    }
 
     public static void main(String[] args) throws Exception {
         linkedList list = new linkedList();
@@ -189,8 +203,9 @@ public class linkedList {
         list.addLast(30);
         list.addLast(40);
         list.display();
+        list.displayReverse();
         // list.addAtAny(100, 2);
-        list.removeAt(3);
-        list.display();
+        // list.removeAt(3);
+        // list.display();
     }
 }
