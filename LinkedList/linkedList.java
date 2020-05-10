@@ -231,7 +231,23 @@ public class linkedList {
 
         tail.next=null;
     }
-
+    public void reverseRecursively()
+    {
+        reverseRecursiveHelper(head);
+        Node temp=head;
+        head=tail;
+        tail=temp;
+        tail.next=null;
+    }
+    public void reverseRecursiveHelper(Node node)
+    {
+        if(node==tail)
+        {
+            return;
+        }
+        reverseRecursiveHelper(node.next);
+        node.next.next=node;
+    }
     public static void main(String[] args) throws Exception {
         linkedList list = new linkedList();
 
@@ -241,7 +257,7 @@ public class linkedList {
         list.addLast(30);
         list.addLast(40);
         list.display();
-        list.reversePointerIterator();
+        list.reverseRecursively();
         list.display();
         // list.displayReverse();
         
