@@ -194,6 +194,44 @@ public class linkedList {
         System.out.print(node.data+" -> ");
     }
 
+    public void reverseDataIterator() throws Exception
+    {
+        int left=0;
+        int right=this.size-1;
+
+        while(left<right)
+        {
+            Node leftNode=getNodeAt(left);
+            Node rightNode=getNodeAt(right);
+
+            int temp=leftNode.data;
+            leftNode.data=rightNode.data;
+            rightNode.data=temp;
+
+            left++;
+            right--;
+        }
+    }
+    public void reversePointerIterator()
+    {
+        Node prev=head;
+        Node curr=head.next;
+
+        while(curr!=null)
+        {
+            Node next=curr.next;
+
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        Node temp=tail;
+        tail=head;
+        head=temp;
+
+        tail.next=null;
+    }
+
     public static void main(String[] args) throws Exception {
         linkedList list = new linkedList();
 
@@ -203,7 +241,10 @@ public class linkedList {
         list.addLast(30);
         list.addLast(40);
         list.display();
-        list.displayReverse();
+        list.reversePointerIterator();
+        list.display();
+        // list.displayReverse();
+        
         // list.addAtAny(100, 2);
         // list.removeAt(3);
         // list.display();
