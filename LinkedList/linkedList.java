@@ -248,6 +248,35 @@ public class linkedList {
         reverseRecursiveHelper(node.next);
         node.next.next=node;
     }
+    
+    public class HeapMover
+    {
+        Node node;
+    }
+
+    public void reversedataRecursive()
+    {
+        HeapMover left=new HeapMover();
+        left.node=head;
+        reversedataRecursive(left,head,0);
+    }
+
+    private void reversedataRecursive(HeapMover left,Node right,int floor)
+    {
+        if(right==null)
+        {
+            return;
+        }
+        reversedataRecursive(left, right.next,floor+1);
+        if(floor>=size/2)
+        {
+            
+            int data=left.node.data;
+            left.node.data=right.data;
+            right.data=data;
+            left.node=left.node.next;
+        }
+    }
     public static void main(String[] args) throws Exception {
         linkedList list = new linkedList();
 
@@ -257,7 +286,7 @@ public class linkedList {
         list.addLast(30);
         list.addLast(40);
         list.display();
-        list.reverseRecursively();
+        list.reversedataRecursive();
         list.display();
         // list.displayReverse();
         
