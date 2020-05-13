@@ -170,142 +170,153 @@ public class linkedList {
         } else if (idx == this.size - 1) {
             return this.removeLast();
         } else {
-            Node nodem1=this.getNodeAt(idx-1);
-            Node n=nodem1.next;
-            Node nodep1=n.next;
-            nodem1.next=nodep1;
+            Node nodem1 = this.getNodeAt(idx - 1);
+            Node n = nodem1.next;
+            Node nodep1 = n.next;
+            nodem1.next = nodep1;
 
             this.size--;
             return n.data;
         }
     }
-    public void displayReverse()
-    {
+
+    public void displayReverse() {
         displayReverseHelper(head);
         System.out.println(".");
     }
-    public void displayReverseHelper(Node node)
-    {
-        if(node == null)
-        {
+
+    public void displayReverseHelper(Node node) {
+        if (node == null) {
             return;
         }
         displayReverseHelper(node.next);
-        System.out.print(node.data+" -> ");
+        System.out.print(node.data + " -> ");
     }
 
-    public void reverseDataIterator() throws Exception
-    {
-        int left=0;
-        int right=this.size-1;
+    public void reverseDataIterator() throws Exception {
+        int left = 0;
+        int right = this.size - 1;
 
-        while(left<right)
-        {
-            Node leftNode=getNodeAt(left);
-            Node rightNode=getNodeAt(right);
+        while (left < right) {
+            Node leftNode = getNodeAt(left);
+            Node rightNode = getNodeAt(right);
 
-            int temp=leftNode.data;
-            leftNode.data=rightNode.data;
-            rightNode.data=temp;
+            int temp = leftNode.data;
+            leftNode.data = rightNode.data;
+            rightNode.data = temp;
 
             left++;
             right--;
         }
     }
-    public void reversePointerIterator()
-    {
-        Node prev=head;
-        Node curr=head.next;
 
-        while(curr!=null)
-        {
-            Node next=curr.next;
+    public void reversePointerIterator() {
+        Node prev = head;
+        Node curr = head.next;
 
-            curr.next=prev;
-            prev=curr;
-            curr=next;
+        while (curr != null) {
+            Node next = curr.next;
+
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
-        Node temp=tail;
-        tail=head;
-        head=temp;
+        Node temp = tail;
+        tail = head;
+        head = temp;
 
-        tail.next=null;
+        tail.next = null;
     }
-    public void reverseRecursively()
-    {
+
+    public void reverseRecursively() {
         reverseRecursiveHelper(head);
-        Node temp=head;
-        head=tail;
-        tail=temp;
-        tail.next=null;
+        Node temp = head;
+        head = tail;
+        tail = temp;
+        tail.next = null;
     }
-    public void reverseRecursiveHelper(Node node)
-    {
-        if(node==tail)
-        {
+
+    public void reverseRecursiveHelper(Node node) {
+        if (node == tail) {
             return;
         }
         reverseRecursiveHelper(node.next);
-        node.next.next=node;
+        node.next.next = node;
     }
-    
-    public class HeapMover
-    {
+
+    public class HeapMover {
         Node node;
     }
 
-    public void reversedataRecursive()
-    {
-        HeapMover left=new HeapMover();
-        left.node=head;
-        reversedataRecursive(left,head,0);
+    public void reversedataRecursive() {
+        HeapMover left = new HeapMover();
+        left.node = head;
+        reversedataRecursive(left, head, 0);
     }
 
-    private void reversedataRecursive(HeapMover left,Node right,int floor)
-    {
-        if(right==null)
-        {
+    private void reversedataRecursive(HeapMover left, Node right, int floor) {
+        if (right == null) {
             return;
         }
-        reversedataRecursive(left, right.next,floor+1);
-        if(floor>=size/2)
-        {
-            
-            int data=left.node.data;
-            left.node.data=right.data;
-            right.data=data;
-            left.node=left.node.next;
+        reversedataRecursive(left, right.next, floor + 1);
+        if (floor >= size / 2) {
+
+            int data = left.node.data;
+            left.node.data = right.data;
+            right.data = data;
+            left.node = left.node.next;
         }
     }
-    public boolean isPalindrome()
-    {
-        HeapMover left=new HeapMover();
-        left.node=head;
-        return this.isPalindrome(left,head);
+
+    public boolean isPalindrome() {
+        HeapMover left = new HeapMover();
+        left.node = head;
+        return this.isPalindrome(left, head);
     }
-    private boolean isPalindrome(HeapMover left, Node right)
-    {
-        if(right==null)
-        {
+
+    private boolean isPalindrome(HeapMover left, Node right) {
+        if (right == null) {
             return true;
         }
-        boolean isPalin=isPalindrome(left,right.next);
-        if(isPalin==false)
-        {
+        boolean isPalin = isPalindrome(left, right.next);
+        if (isPalin == false) {
             return false;
-        }
-        else
-        {
-            if(left.node.data==right.data)
-            {
-                left.node=left.node.next;
+        } else {
+            if (left.node.data == right.data) {
+                left.node = left.node.next;
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
         }
     }
+
+    public void fold() {
+        HeapMover left = new HeapMover();
+        left.node = head;
+        this.fold(left, head, 0);
+    }
+
+    public void fold(HeapMover left, Node right, int floor) {
+        if (right == null) {
+            return;
+        }
+
+        fold(left, right.next, floor + 1);
+        if (floor > this.size / 2) {
+            Node oln = left.node.next;
+            left.node.next = right;
+            right.next = oln;
+            left.node = oln;
+        }
+        else if(floor==this.size/2)
+        {
+            this.tail=right;
+            this.tail.next=null;
+        }
+        
+    }
+
     public static void main(String[] args) throws Exception {
         linkedList list = new linkedList();
 
@@ -316,11 +327,14 @@ public class linkedList {
         list.addLast(10);
         list.addLast(5);
         list.display();
+        list.fold();
+        list.display();
         // list.reversedataRecursive();
         // list.display();
-        System.out.println(list.isPalindrome());
-        // list.displayReverse();
         
+        // System.out.println(list.isPalindrome());
+        // list.displayReverse();
+
         // list.addAtAny(100, 2);
         // list.removeAt(3);
         // list.display();
