@@ -277,17 +277,48 @@ public class linkedList {
             left.node=left.node.next;
         }
     }
+    public boolean isPalindrome()
+    {
+        HeapMover left=new HeapMover();
+        left.node=head;
+        return this.isPalindrome(left,head);
+    }
+    private boolean isPalindrome(HeapMover left, Node right)
+    {
+        if(right==null)
+        {
+            return true;
+        }
+        boolean isPalin=isPalindrome(left,right.next);
+        if(isPalin==false)
+        {
+            return false;
+        }
+        else
+        {
+            if(left.node.data==right.data)
+            {
+                left.node=left.node.next;
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
     public static void main(String[] args) throws Exception {
         linkedList list = new linkedList();
 
         list.addFirst(5);
         list.addLast(10);
         list.addLast(20);
-        list.addLast(30);
-        list.addLast(40);
+        list.addLast(20);
+        list.addLast(10);
+        list.addLast(5);
         list.display();
-        list.reversedataRecursive();
-        list.display();
+        // list.reversedataRecursive();
+        // list.display();
+        System.out.println(list.isPalindrome());
         // list.displayReverse();
         
         // list.addAtAny(100, 2);
