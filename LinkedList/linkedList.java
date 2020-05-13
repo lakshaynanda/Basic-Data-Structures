@@ -332,6 +332,18 @@ public class linkedList {
         }
         return slow.data;
     }
+    public int midNode()
+    {
+        Node slow=head;
+        Node fast=head;
+
+        while(fast.next!=null && fast.next.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow.data;
+    }
 
     public static void main(String[] args) throws Exception {
         linkedList list = new linkedList();
@@ -342,10 +354,11 @@ public class linkedList {
         list.addLast(40);
         list.addLast(50);
         list.addLast(89);
+        list.addLast(23);
         list.display();
         // list.fold();
         // list.display();
-        System.out.println(list.kNodeFromLast(2));
+        System.out.println(list.midNode());
         // list.reversedataRecursive();
         // list.display();
         
