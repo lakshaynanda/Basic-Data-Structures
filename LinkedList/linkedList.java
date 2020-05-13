@@ -316,19 +316,36 @@ public class linkedList {
         }
         
     }
+    public int kNodeFromLast(int k)
+    {
+        Node slow=head;
+        Node fast=head;
+
+        for(int i=0;i<k;i++)
+        {
+            fast=fast.next;
+        }
+        while(fast!=null)
+        {
+            slow=slow.next;
+            fast=fast.next;
+        }
+        return slow.data;
+    }
 
     public static void main(String[] args) throws Exception {
         linkedList list = new linkedList();
 
         list.addFirst(5);
         list.addLast(10);
-        list.addLast(20);
-        list.addLast(20);
-        list.addLast(10);
-        list.addLast(5);
+        list.addLast(30);
+        list.addLast(40);
+        list.addLast(50);
+        list.addLast(89);
         list.display();
-        list.fold();
-        list.display();
+        // list.fold();
+        // list.display();
+        System.out.println(list.kNodeFromLast(2));
         // list.reversedataRecursive();
         // list.display();
         
