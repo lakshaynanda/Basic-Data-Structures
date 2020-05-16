@@ -372,24 +372,54 @@ public class linkedList {
         }
         return res;
     }
+    public void kReverse(int k) throws Exception
+    {
+        linkedList n1=new linkedList();
+        linkedList temp=new linkedList();
+
+        while(!this.isEmpty())
+        {
+            for(int i=0;i<k;i++)
+            {
+                int data=this.removeFirst();
+                temp.addFirst(data);
+            }
+            if(n1.size==0)
+            {
+                n1=temp;
+                temp=new linkedList();
+            }
+            else
+            {
+                n1.tail.next=temp.head;
+                n1.tail=temp.tail;
+                n1.size+=temp.size;
+                temp=new linkedList();
+            }
+        }
+        this.head=n1.head;
+        this.tail=n1.tail;
+        this.size=n1.size;
+    }
 
     public static void main(String[] args) throws Exception {
         linkedList one = new linkedList();
-        linkedList two =new linkedList();
+        // linkedList two =new linkedList();
         
 
         one.addFirst(10);
         one.addLast(20);
         one.addLast(30);
         one.addLast(40);
-        two.addLast(5);
-        two.addLast(7);
-        two.addLast(18);
-        two.addLast(35);
-        two.addLast(42);
-        two.addLast(45);
-        linkedList res =linkedList.mergeLinkList(one,two);
-        res.display();
+        one.addLast(5);
+        one.addLast(7);
+        one.addLast(18);
+        one.addLast(35);
+        one.addLast(42);
+        one.addLast(45);
+        one.kReverse(3);
+        // linkedList res =linkedList.mergeLinkList(one,two);
+        one.display();
         // two.display();
         // list.fold();
         // list.display();
