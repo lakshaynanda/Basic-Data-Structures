@@ -1,7 +1,5 @@
 import java.util.*;
 
-import javax.lang.model.util.ElementScanner14;
-
 public class linkedList {
     public class Node {
         int data;
@@ -344,21 +342,58 @@ public class linkedList {
         }
         return slow.data;
     }
+    public static linkedList mergeLinkList(linkedList one,linkedList two)
+    {
+        linkedList res=new linkedList();
+        Node onode=one.head;
+        Node tnode=two.head;
+
+        while(onode != null && tnode != null)
+        {
+            if(onode.data<tnode.data)
+            {
+                res.addLast(onode.data);
+                onode=onode.next;
+            }
+            else{
+                res.addLast(tnode.data);
+                tnode=tnode.next;
+            }
+        }
+        while(onode != null)
+        {
+            res.addLast(onode.data);
+            onode=onode.next;
+        }
+        while(tnode != null)
+        {
+            res.addLast(tnode.data);
+            tnode=tnode.next;
+        }
+        return res;
+    }
 
     public static void main(String[] args) throws Exception {
-        linkedList list = new linkedList();
+        linkedList one = new linkedList();
+        linkedList two =new linkedList();
+        
 
-        list.addFirst(5);
-        list.addLast(10);
-        list.addLast(30);
-        list.addLast(40);
-        list.addLast(50);
-        list.addLast(89);
-        list.addLast(23);
-        list.display();
+        one.addFirst(10);
+        one.addLast(20);
+        one.addLast(30);
+        one.addLast(40);
+        two.addLast(5);
+        two.addLast(7);
+        two.addLast(18);
+        two.addLast(35);
+        two.addLast(42);
+        two.addLast(45);
+        linkedList res =linkedList.mergeLinkList(one,two);
+        res.display();
+        // two.display();
         // list.fold();
         // list.display();
-        System.out.println(list.midNode());
+        // System.out.println(list.midNode());
         // list.reversedataRecursive();
         // list.display();
         
