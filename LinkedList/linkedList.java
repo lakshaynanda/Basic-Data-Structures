@@ -401,6 +401,21 @@ public class linkedList {
         this.tail=n1.tail;
         this.size=n1.size;
     }
+    public void removeDuplicate() throws Exception
+    {
+        linkedList list=new linkedList();
+        while(!this.isEmpty())
+        {
+            int rem=this.removeFirst();
+            if(list.size==0 || list.tail.data!=rem)
+            {
+                list.addLast(rem);
+            }
+        }
+        this.head=list.head;
+        this.tail=list.tail;
+        this.size=list.size;
+    }
 
     public static void main(String[] args) throws Exception {
         linkedList one = new linkedList();
@@ -409,16 +424,17 @@ public class linkedList {
 
         one.addFirst(10);
         one.addLast(20);
-        one.addLast(30);
-        one.addLast(40);
+        one.addLast(20);
+        one.addLast(20);
         one.addLast(5);
-        one.addLast(7);
+        one.addLast(5);
         one.addLast(18);
-        one.addLast(35);
+        one.addLast(18);
         one.addLast(42);
-        one.addLast(45);
-        one.kReverse(3);
+        one.addLast(42);
+        // one.kReverse(3);
         // linkedList res =linkedList.mergeLinkList(one,two);
+        one.removeDuplicate();
         one.display();
         // two.display();
         // list.fold();
