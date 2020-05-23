@@ -451,6 +451,46 @@ public class linkedList {
         }
         
     }
+    public Node middleNode()
+    {
+        Node slow=head;
+        Node fast=head;
+
+        while(fast.next!=null && fast.next.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow;
+    }
+    public static linkedList mergeSort(linkedList one)
+    {
+        if(one.size==1)
+        {
+            return one;
+        }
+        Node mid=one.middleNode();
+        
+        linkedList fh=new linkedList();
+        fh.head=one.head;
+        fh.tail=mid;
+        fh.size=(one.size+1)/2;
+        
+    
+        linkedList sh=new linkedList();
+        sh.head=mid.next;
+        sh.tail=one.tail;
+        sh.size=one.size/2;
+
+        mid.next=null;
+
+        fh=linkedList.mergeSort(fh);
+        sh=linkedList.mergeSort(sh);
+
+        linkedList res=linkedList.mergeLinkList(fh, sh);
+        return res;
+    }
+
 
     public static void main(String[] args) throws Exception {
         linkedList one = new linkedList();
@@ -470,8 +510,9 @@ public class linkedList {
         // one.kReverse(3);
         // linkedList res =linkedList.mergeLinkList(one,two);
         // one.removeDuplicate();
+        one.fold();
         one.display();
-        one.oddEven();
+        one=linkedList.mergeSort(one);
         one.display();
         // two.display();
         // list.fold();
