@@ -416,25 +416,62 @@ public class linkedList {
         this.tail=list.tail;
         this.size=list.size;
     }
+    public void oddEven() throws Exception
+    {
+        linkedList odd=new linkedList();
+        linkedList even=new linkedList();
+        while(this.size()!=0)
+        {
+            int rem=this.removeFirst();
+            if(rem%2==1)
+            {
+                odd.addLast(rem);
+            }
+            else{
+                even.addLast(rem);
+            }
+        }
+        if(odd.size==0)
+        {
+            this.head=even.head;
+            this.tail=even.tail;
+            this.size=even.size;
+        }
+        else if(even.size==0)
+        {
+            this.head=odd.head;
+            this.tail=odd.tail;
+            this.size=odd.size;
+        }else
+        {
+            this.head=odd.head;
+            this.tail=even.tail;
+            this.size=odd.size+even.size;
+            odd.tail.next=even.head;
+        }
+        
+    }
 
     public static void main(String[] args) throws Exception {
         linkedList one = new linkedList();
         // linkedList two =new linkedList();
         
 
-        one.addFirst(10);
+        one.addFirst(5);
+        one.addLast(15);
         one.addLast(20);
-        one.addLast(20);
-        one.addLast(20);
-        one.addLast(5);
-        one.addLast(5);
+        one.addLast(40);
+        one.addLast(11);
+        one.addLast(9);
         one.addLast(18);
-        one.addLast(18);
-        one.addLast(42);
-        one.addLast(42);
+        // one.addLast(18);
+        // one.addLast(42);
+        // one.addLast(42);
         // one.kReverse(3);
         // linkedList res =linkedList.mergeLinkList(one,two);
-        one.removeDuplicate();
+        // one.removeDuplicate();
+        one.display();
+        one.oddEven();
         one.display();
         // two.display();
         // list.fold();
