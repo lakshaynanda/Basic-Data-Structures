@@ -11,6 +11,8 @@ public class genericTrees {
     {
         this.root=construct(new Scanner(System.in), null, 0);
     }
+
+    
     private Node construct(Scanner sc,Node parent,int i)
     {
         if(parent==null)
