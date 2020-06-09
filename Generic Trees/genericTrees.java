@@ -64,7 +64,7 @@ public class genericTrees {
         }
         else
         {
-            System.out.println("Enter the data for the"+i+"th child of "+parent);
+            System.out.println("Enter the data for the"+i+"th child of "+parent.data);
         }
         int cdata=sc.nextInt();
         Node child=new Node();
