@@ -87,3 +87,4 @@ public class genericTrees {
         System.out.println(tree.size2());
     }
 }
+
