@@ -80,11 +80,28 @@ public class genericTrees {
         }
         return child;
     }
+    public int max()
+    {
+        return this.max(root);
+    }
+    private int max(Node node)
+    {
+        int rv=node.data;
+        for(Node child:node.children)
+        {
+            int cmax=max(child);
+            rv=Math.max(rv,cmax);
+        }
+        return rv;
+    }
     public static void main(String args[])
     {
         genericTrees tree=new genericTrees();
         tree.display();
         System.out.println(tree.size2());
+        tree.max();
+        System.out.println("Max Value is: ");
+        System.out.println(tree.max());
     }
 }
 
