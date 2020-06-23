@@ -94,6 +94,26 @@ public class genericTrees {
         }
         return rv;
     }
+    public boolean find(int data)
+    {
+        return find(root,data);
+    }
+    public boolean find(Node node,int data)
+    {
+        if(node.data==data)
+        {
+            return true;
+        }
+        for(Node child:node.children)
+        {
+            boolean fic=find(child, data);
+            if(fic)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String args[])
     {
         genericTrees tree=new genericTrees();
@@ -102,6 +122,7 @@ public class genericTrees {
         tree.max();
         System.out.println("Max Value is: ");
         System.out.println(tree.max());
+        System.out.println(find(120));
     }
 }
 
