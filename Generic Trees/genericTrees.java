@@ -114,6 +114,20 @@ public class genericTrees {
         }
         return false;
     }
+    public int height()
+    {
+        return height(root);
+    }
+    public int height(Node node)
+    {
+        int cmaxHt=0;
+        for(Node child:node.children)
+        {
+            int cHt=height(child);
+            cmaxHt=Math.max(cmaxHt,cHt);
+        }
+        return cmaxHt+1;
+    }
     public static void main(String args[])
     {
         genericTrees tree=new genericTrees();
