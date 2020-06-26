@@ -146,10 +146,13 @@ public class genericTrees {
         genericTrees tree=new genericTrees();
         tree.display();
         System.out.println(tree.size2());
-        tree.max();
-        System.out.println("Max Value is: ");
-        System.out.println(tree.max());
-        System.out.println(find(120));
+        // tree.max();
+        // System.out.println("Max Value is: ");
+        // System.out.println(tree.max());
+        // System.out.println(find(120));
+        //10 3 20 2 50 0 60 0 30 3 70 0 80 2 110 0 120 0 90 0 40 1 100 0
+        tree.preo();
+        System.out.println();
     }
 }
 
