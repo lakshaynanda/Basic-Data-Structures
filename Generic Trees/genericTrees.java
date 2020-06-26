@@ -128,6 +128,19 @@ public class genericTrees {
         }
         return cmaxHt+1;
     }
+    //preorder rule N>C
+    public void preo()
+    {
+        preo(root);
+    }
+    public void preo(Node node)
+    {
+        System.out.print(node.data+"->");
+        for(Node child:node.children)
+        {
+            preo(child);//faith 
+        }
+    } 
     public static void main(String args[])
     {
         genericTrees tree=new genericTrees();
