@@ -1,5 +1,11 @@
 import java.util.*;
 public class genericTrees {
+    
+    public class Pair()
+    {
+        Node node;
+        int level;
+    }
     private class Node
     {
         int data;
@@ -153,6 +159,52 @@ public class genericTrees {
         }
         System.out.print(node.data+"->");
     }
+    public void levelOrder()
+    {
+        LinkedList<Node> queue=new LinkedList<>();
+        queue.addLast(root);
+        while(queue.isEmpty()==false)
+        {
+            Node rem=queue.removeFirst();
+            System.out.print(rem.data+" ");
+            for(Node child:rem.children)
+            {
+                queue.addLast(child);
+            }
+        }
+        System.out.println(".");
+    }
+   
+    public void levelolw()
+    {
+        LinkedList<Pair> queue=new LinkedList<>();
+
+        Pair rootpair=new Pair();
+        rootpair.node=root;
+        rootpair.level=0;
+
+        queue.addLast(rootpair);
+        Pair prev=null;
+
+        while(queue.size()>0)
+        {
+            Pair curr=queue.removeFirst();
+            if(prev!=null && prev.level!=curr.level)
+            {
+                System.out.println();
+            }
+            System.out.print(curr.node.data+" ");
+            for(Node child:curr.node.children)
+            {
+                Pair cpair=new Pair();
+                cpair.node=child;
+                cpair.level=curr.level+1;
+                queue.addLast(cpair);
+            }
+            prev=curr;
+        }
+    }
+    
     public static void main(String args[])
     {
         genericTrees tree=new genericTrees();
@@ -163,8 +215,10 @@ public class genericTrees {
         // System.out.println(tree.max());
         // System.out.println(find(120));
         //10 3 20 2 50 0 60 0 30 3 70 0 80 2 110 0 120 0 90 0 40 1 100 0
-        tree.posto();
-        System.out.println();
+        // tree.posto();
+        // System.out.println();
+        tree.levelOrder();
+
     }
 }
 
