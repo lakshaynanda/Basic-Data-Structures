@@ -1,11 +1,7 @@
 import java.util.*;
 public class genericTrees {
     
-    public class Pair()
-    {
-        Node node;
-        int level;
-    }
+    
     private class Node
     {
         int data;
@@ -174,34 +170,63 @@ public class genericTrees {
         }
         System.out.println(".");
     }
-   
-    public void levelolw()
+    // public class Pair()
+    // {
+    //     Node node;
+    //     int level;
+    // }
+    // public void levelolw()
+    // {
+    //     LinkedList<Pair> queue=new LinkedList<>();
+
+    //     Pair rootpair=new Pair();
+    //     rootpair.node=root;
+    //     rootpair.level=0;
+
+    //     queue.addLast(rootpair);
+    //     Pair prev=null;
+
+    //     while(queue.size()>0)
+    //     {
+    //         Pair curr=queue.removeFirst();
+    //         if(prev!=null && prev.level!=curr.level)
+    //         {
+    //             System.out.println();
+    //         }
+    //         System.out.print(curr.node.data+" ");
+    //         for(Node child:curr.node.children)
+    //         {
+    //             Pair cpair=new Pair();
+    //             cpair.node=child;
+    //             cpair.level=curr.level+1;
+    //             queue.addLast(cpair);
+    //         }
+    //         prev=curr;
+    //     }
+    // }
+    public void levelorderDelim()
     {
-        LinkedList<Pair> queue=new LinkedList<>();
-
-        Pair rootpair=new Pair();
-        rootpair.node=root;
-        rootpair.level=0;
-
-        queue.addLast(rootpair);
-        Pair prev=null;
-
+        LinkedList<Node> queue=new LinkedList<>();
+        queue.add(root);
+        queue.add(null);
         while(queue.size()>0)
         {
-            Pair curr=queue.removeFirst();
-            if(prev!=null && prev.level!=curr.level)
+            Node rem=queue.removeFirst();
+            if(rem!=null)
             {
+                System.out.print(rem.data+" ");
+                for(Node child:rem.children)
+                {
+                    queue.addLast(child);
+                }
+            }else{
                 System.out.println();
+                if(queue.size()>0)
+                {
+                    queue.add(null);
+                }
             }
-            System.out.print(curr.node.data+" ");
-            for(Node child:curr.node.children)
-            {
-                Pair cpair=new Pair();
-                cpair.node=child;
-                cpair.level=curr.level+1;
-                queue.addLast(cpair);
-            }
-            prev=curr;
+
         }
     }
     
@@ -217,7 +242,7 @@ public class genericTrees {
         //10 3 20 2 50 0 60 0 30 3 70 0 80 2 110 0 120 0 90 0 40 1 100 0
         // tree.posto();
         // System.out.println();
-        tree.levelOrder();
+        tree.levelorderDelim();
 
     }
 }
