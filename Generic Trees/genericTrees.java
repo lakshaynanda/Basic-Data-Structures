@@ -264,11 +264,71 @@ public class genericTrees {
             }
         }
     }
+    public void mirror()
+    {
+        mirror(root);
+    }
+    public void mirror(Node node)
+    {
+        for(Node child:node.children)
+        {
+            mirror(child);
+        }
+        Collections.reverse(node.children);
+    }
+    public void removeLeaves()
+    {
+        removeLeaves(root);
+    }
+    public void removeLeaves(Node node)
+    {
+        for(int i=node.children.size()-1;i>=0;i--)
+        {
+            Node child=node.children.get(i);
+
+            if(child.children.size()==0)
+            {
+                node.children.remove(child);
+            }
+            else
+            {
+                removeLeaves(child);
+            }
+        }
+    }
+    public void linearize()
+    {
+        linearize(root);
+    }
+    public void linearize(Node node)
+    {
+        for(Node child:node.children)
+        {
+            linearize(child);
+        }
+        while(node.children.size() > 1)
+        {
+            Node sl=node.children.get(node.children.size()-2);
+            Node l=node.children.remove(node.children.size()-1);
+
+            Node slTail=getTail(sl);
+            slTail.children.add(l);
+        }
+    }
+    public Node getTail(Node node)
+    {
+        Node tail=node;
+        while(tail.children.size()==1)
+        {
+            tail=tail.children.get(0);
+        }
+        return tail;
+    }
     public static void main(String args[])
     {
         genericTrees tree=new genericTrees();
-        tree.display();
-        System.out.println(tree.size2());
+        // tree.display();
+        // System.out.println(tree.size2());
         // tree.max();
         // System.out.println("Max Value is: ");
         // System.out.println(tree.max());
@@ -277,7 +337,12 @@ public class genericTrees {
         // tree.posto();
         // System.out.println();
         // tree.levelorderDelim();
-        tree.levelorderZigZag();
+        // tree.levelorderZigZag();
+        // tree.mirror();
+
+        tree.linearize();
+        tree.display();
+
     }
 }
 
