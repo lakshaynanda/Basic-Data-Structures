@@ -324,6 +324,24 @@ public class genericTrees {
         }
         return tail;
     }
+    public void linearizeEff()
+    {
+        linearize(root);
+    }
+    private Node linearizeEff(Node node)
+    {
+        Node oltail=node.children.get(node.children.size()-1);
+        while(node.children.size()>1)
+        {
+            Node sl=node.children.get(node.children.size()-2);
+            Node l=node.children.remove(node.children.size()-1);
+
+            Node slkitail=linearizeEff(sl);
+            node.children.add(l);
+        }
+        return oltail;
+    }
+
     public static void main(String args[])
     {
         genericTrees tree=new genericTrees();
