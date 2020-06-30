@@ -229,7 +229,41 @@ public class genericTrees {
 
         }
     }
-    
+    public void levelorderZigZag()
+    {
+        LinkedList<Node> clq=new LinkedList<>();
+        LinkedList<Node> nls=new LinkedList<>();
+
+        boolean l2r=true;
+        clq.add(root);
+        while(clq.size()!=0)
+        {
+            Node rem=clq.removeFirst();
+            System.out.print(rem.data+" ");
+            if(l2r)
+            {
+                for(int i=0;i<rem.children.size();i++)
+                {
+                    Node child=rem.children.get(i);
+                    nls.addFirst(child);
+                }
+            }else
+            {
+                for(int i=rem.children.size()-1;i>=0;i--)
+                {
+                    Node child=rem.children.get(i);
+                    nls.addFirst(child);
+                }
+            }
+            if(clq.size()==0)
+            {
+                clq=nls;
+                nls=new LinkedList<>();
+                System.out.println();
+                l2r=!l2r;
+            }
+        }
+    }
     public static void main(String args[])
     {
         genericTrees tree=new genericTrees();
@@ -242,8 +276,8 @@ public class genericTrees {
         //10 3 20 2 50 0 60 0 30 3 70 0 80 2 110 0 120 0 90 0 40 1 100 0
         // tree.posto();
         // System.out.println();
-        tree.levelorderDelim();
-
+        // tree.levelorderDelim();
+        tree.levelorderZigZag();
     }
 }
 
