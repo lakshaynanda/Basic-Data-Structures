@@ -341,7 +341,31 @@ public class genericTrees {
         }
         return oltail;
     }
-
+    public boolean isIsomorphic(genericTrees other)
+    {
+        return isIsomorphic(this.root,other.root);
+    }
+    private boolean isIsomorphic(Node tnode,Node onode)
+    {
+        if(tnode.children.size()==onode.children.size())
+        {
+            for(int i=0;i<tnode.children.size();i++)
+            {
+                Node tchild=tnode.children.get(i);
+                Node ochild=onode.children.get(i);
+                boolean isIsoChild=isIsomorphic(tchild, ochild);
+                if(isIsoChild==false)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }else
+        {
+            return false;
+        }
+        
+    }
     public static void main(String args[])
     {
         genericTrees tree=new genericTrees();
@@ -358,7 +382,7 @@ public class genericTrees {
         // tree.levelorderZigZag();
         // tree.mirror();
 
-        tree.linearize();
+        tree.isIsomorphic();
         tree.display();
 
     }
