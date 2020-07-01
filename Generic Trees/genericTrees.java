@@ -364,7 +364,37 @@ public class genericTrees {
         {
             return false;
         }
-        
+    }
+    public boolean isMirror(genericTrees other)
+    {
+        return isMirror(this.root,other.root);
+    }
+    public boolean isMirror(Node tnode,Node onode)
+    {
+        if(tnode.children.size()!=onode.children.size())
+        {
+            return false;
+        }
+        int left=0;
+        int right=tnode.children.size()-1;
+        while(left<tnode.children.size())
+        {
+            Node tchild=tnode.children.get(left);
+            Node ochild=onode.children.get(right);
+
+            boolean ismirror=isMirror(tchild, ochild);
+            if(ismirror==false)
+            {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+    public boolean isSymmetric()
+    {
+        return isMirror(this.root, this.root);
     }
     public static void main(String args[])
     {
@@ -376,13 +406,14 @@ public class genericTrees {
         // System.out.println(tree.max());
         // System.out.println(find(120));
         //10 3 20 2 50 0 60 0 30 3 70 0 80 2 110 0 120 0 90 0 40 1 100 0
+        //10 3 20 2 50 0 60 0 30 0 40 1 70 0
         // tree.posto();
         // System.out.println();
         // tree.levelorderDelim();
         // tree.levelorderZigZag();
         // tree.mirror();
-
-        tree.isIsomorphic();
+        System.out.println(tree.isSymmetric());
+        
         tree.display();
 
     }
