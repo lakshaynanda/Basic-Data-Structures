@@ -471,7 +471,18 @@ public class genericTrees {
     //         justLarger(root, mover, data);
     //     }
     // }
-
+        // public int kthsmallest(int k)
+        // {
+        //     Heapmover mover=new Heapmover();
+        //     int data=Integer.MIN_VALUE;
+        //     for(int i=0;i<k;i++)
+        //     {
+        //         justLarger(root,mover,data)
+        //         data=mover.jl.data;
+        //         mover.jl=null;
+        //     }
+        //     return data;
+        // }
     public static void main(String args[])
     {
         genericTrees tree=new genericTrees();
