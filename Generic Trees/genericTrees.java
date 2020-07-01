@@ -403,6 +403,35 @@ public class genericTrees {
     //     int max=Integer.MIN_VALUE;
     //     int height=0;
     //     boolean find=false;
+
+    //     Node prev=null;
+    //     Node curr=null;
+    //     Node pred=null;
+    //     Node succ=null;
+
+    //     Node jl=null;
+    // }
+
+    // public void predSucc(int data)
+    // {
+    //     Heapmover mover=new Heapmover();
+    //     predSucc(root,mover,data);
+
+    //     System.out.print("Predecessor : "+ mover.pred==null?null:mover.pred.data);
+    //     System.out.print("Successor : "+ mover.succ==null?null:mover.succ.data);
+    // }
+    // public void predSucc(Node node,Heapmover mover,int data)
+    // {
+    //     mover.curr=node;
+    //     if(mover.curr.data==data)
+    //     {
+    //         mover.pred=mover.prev;
+    //     }
+    //     else if(mover.prev!= null && mover.prev.data==data)
+    //     {
+    //         mover.succ=mover.curr;
+    //     }
+    //     mover.prev=node;
     // }
     // public void multitask(int data)
     // {
@@ -423,6 +452,26 @@ public class genericTrees {
     //     mover.find=mover.find || node.data==data;
 
     // }
+    // public void justLarger(int data)
+    // {
+    //     Heapmover mover=new Heapmover();
+    //     justLarger(root,mover,data);
+    //     System.out.println("Just Larger :" +mover.jl==null?"null":mover.jl.data);
+    // }
+    // public void justLarger(Node node,Heapmover mover,int data){
+    //     if(node.data>data)
+    //     {
+    //         if(mover.jl==null || node.data<mover.jl.data)
+    //         {
+    //             mover.hl=node;
+    //         }
+    //     }
+    //     for(Node child:children)
+    //     {
+    //         justLarger(root, mover, data);
+    //     }
+    // }
+
     public static void main(String args[])
     {
         genericTrees tree=new genericTrees();
