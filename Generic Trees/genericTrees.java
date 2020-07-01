@@ -396,6 +396,33 @@ public class genericTrees {
     {
         return isMirror(this.root, this.root);
     }
+    // public class Heapmover()
+    // {
+    //     int size=0;
+    //     int min=Integer.MAX_VALUE;
+    //     int max=Integer.MIN_VALUE;
+    //     int height=0;
+    //     boolean find=false;
+    // }
+    // public void multitask(int data)
+    // {
+    //     Heapmover mover=new Heapmover();
+    //     multitask(root,mover,data,0);
+    //     System.out.println("Max + :" + mover.max);
+    //     System.out.println("Min + :" + mover.min);
+    //     System.out.println("Height + :" + mover.height);
+    //     System.out.println("find + :" + mover.find);
+    //     System.out.println("size + :" + mover.size);
+    // }
+    // public void multitask(Node node, Heapmover mover,int data,int depth)
+    // {
+    //     mover.size++;
+    //     mover.min=Math.min(node.data, mover.min);
+    //     mover.max=Math.min(node.data, mover.min);
+    //     mover.height=Math.max(depth, mover.height);
+    //     mover.find=mover.find || node.data==data;
+
+    // }
     public static void main(String args[])
     {
         genericTrees tree=new genericTrees();
