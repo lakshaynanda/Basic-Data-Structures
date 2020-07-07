@@ -75,12 +75,29 @@ public class BinaryTree {
         display(node.left);
         display(node.right);
     }
+    public int size2()
+    {
+        return size2(root);
+    }
+    private int size2(Node node)
+    {
+        if(node==null)
+        {
+            return 0;
+        }
+        int lsize=size2(node.left);
+        int rsize=size2(node.right);
+
+        return lsize+rsize+1;
+    }
 
     public static void main(String args[])
     {
         BinaryTree tree=new BinaryTree();
         // System.out.println(tree.size());
         tree.display();
+        System.out.println(tree.size());
+        
         //50 true 25 true 12 false true 20 false false true 37 true 30 false false false true 75 true 62 false false true 87 false false
     }
 
