@@ -90,14 +90,70 @@ public class BinaryTree {
 
         return lsize+rsize+1;
     }
+    public int max()
+    {
+        return max(root);
+    }
+    private int max(Node node)
+    {
+        if(node==null)
+        {
+            return Integer.MIN_VALUE;
+        }
+        int maxl=max(node.left);
+        int maxr=max(node.right);
 
+        return Math.max(node.data,Math.max(maxl,maxr));
+    }
+    public int height()
+    {
+        return height(root);
+    }
+    private int height(Node node)
+    {
+        if(node==null)
+        {
+            return -1;
+        }
+        int lh=height(node.left);
+        int rh=height(node.right);
+        return Math.max(lh,rh)+1;
+    }
+    public boolean find(int data)
+    {
+        return find(root,data);
+    }
+    private boolean find(Node node,int data)
+    {
+        if(node==null)
+        {
+            return false;
+        }
+        if(data==node.data)
+        {
+            return true;
+        }
+        boolean findleft=find(node.left,data);
+        if(findleft)
+        {
+            return true;
+        }
+        boolean findright=find(node.right,data);
+        if(findright)
+        {
+            return true;
+        }
+        return false;
+    }
     public static void main(String args[])
     {
         BinaryTree tree=new BinaryTree();
         // System.out.println(tree.size());
         tree.display();
-        System.out.println(tree.size());
-        
+        // System.out.println(tree.size());
+        // System.out.println(tree.max());
+        // System.out.println(tree.height());
+        System.out.println(tree.find(35));
         //50 true 25 true 12 false true 20 false false true 37 true 30 false false false true 75 true 62 false false true 87 false false
     }
 
