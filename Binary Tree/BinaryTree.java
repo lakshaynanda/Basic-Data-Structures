@@ -212,6 +212,33 @@ public class BinaryTree {
         }
         System.out.print(". ");
     }
+    // public static class Pair()
+    // {
+    //     int n;
+    //     String bin="";
+    //     Pair(int n,String bin)
+    //     {
+    //         this.n=n;
+    //         this.bin=bin;
+    //     }
+    // }
+    // public static void printBinaries(int n)
+    // {
+    //     LinkedList<Pair> queue=new LinkedList<>();
+    //     queue.add(new Pair(1,"1"));
+    //     while(queue.size()>0)
+    //     {
+    //         Pair rem=queue.removeFirst();
+    //         if(rem.n==n)
+    //         {
+    //             break;
+    //         }
+    //         System.out.println(rem.n+" -> "+rem.bin);
+    //         queue.addLast(new Pair(2 * rem.n,rem.bin+"0"));
+    //         queue.addLast(new Pair(2 * rem.n+1,rem.bin+"1"));
+    //     }
+        
+    // }
     public static void main(String args[])
     {
         BinaryTree tree=new BinaryTree();
