@@ -145,6 +145,54 @@ public class BinaryTree {
         }
         return false;
     }
+    public void preo()
+    {
+        preo(root);
+        System.out.println(".");
+    }
+    //NLR while going deep into recursion,euler left
+    private void preo(Node node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        System.out.print(node.data+" ");
+        preo(node.left);
+        preo(node.right);
+    }
+    public void postorder()
+    {
+        postorder(root);
+        System.out.println(".");
+    }
+    //LRN while going deep,euler right
+    private void postorder(Node node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        postorder(node.left);
+        postorder(node.right);
+        System.out.print(node.data+" ");
+    }
+    public void inorder()
+    {
+        inorder(root);
+        System.out.println(".");
+    }
+    //LNR while going deep, euler middle (after left)
+    private void inorder(Node node)
+    {
+        if(node==null)
+        {
+            return;
+        }
+        inorder(node.left);
+        System.out.print(node.data+" ");
+        inorder(node.right);
+    }
     public static void main(String args[])
     {
         BinaryTree tree=new BinaryTree();
@@ -153,7 +201,10 @@ public class BinaryTree {
         // System.out.println(tree.size());
         // System.out.println(tree.max());
         // System.out.println(tree.height());
-        System.out.println(tree.find(35));
+        // System.out.println(tree.find(35));
+        tree.preo();
+        tree.postorder();
+        tree.inorder();
         //50 true 25 true 12 false true 20 false false true 37 true 30 false false false true 75 true 62 false false true 87 false false
     }
 
