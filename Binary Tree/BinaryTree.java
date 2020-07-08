@@ -193,6 +193,25 @@ public class BinaryTree {
         System.out.print(node.data+" ");
         inorder(node.right);
     }
+    public void levelo()
+    {
+        LinkedList<Node> queue=new LinkedList<>();
+        queue.addLast(root);
+        while(queue.isEmpty()==false)
+        {
+            Node rn=queue.removeFirst();
+            System.out.print(rn.data+" ");
+            if(rn.left!=null)
+            {
+                queue.addLast(rn.left);
+            }
+            if(rn.right!=null)
+            {
+                queue.addLast(rn.right);
+            }
+        }
+        System.out.print(". ");
+    }
     public static void main(String args[])
     {
         BinaryTree tree=new BinaryTree();
@@ -202,9 +221,10 @@ public class BinaryTree {
         // System.out.println(tree.max());
         // System.out.println(tree.height());
         // System.out.println(tree.find(35));
-        tree.preo();
-        tree.postorder();
-        tree.inorder();
+        // tree.preo();
+        // tree.postorder();
+        // tree.inorder();
+        tree.levelo();
         //50 true 25 true 12 false true 20 false false true 37 true 30 false false false true 75 true 62 false false true 87 false false
     }
 
