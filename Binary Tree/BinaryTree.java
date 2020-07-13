@@ -212,33 +212,140 @@ public class BinaryTree {
         }
         System.out.print(". ");
     }
-    // public static class Pair()
-    // {
-    //     int n;
-    //     String bin="";
-    //     Pair(int n,String bin)
-    //     {
-    //         this.n=n;
-    //         this.bin=bin;
-    //     }
-    // }
-    // public static void printBinaries(int n)
-    // {
-    //     LinkedList<Pair> queue=new LinkedList<>();
-    //     queue.add(new Pair(1,"1"));
-    //     while(queue.size()>0)
-    //     {
-    //         Pair rem=queue.removeFirst();
-    //         if(rem.n==n)
-    //         {
-    //             break;
-    //         }
-    //         System.out.println(rem.n+" -> "+rem.bin);
-    //         queue.addLast(new Pair(2 * rem.n,rem.bin+"0"));
-    //         queue.addLast(new Pair(2 * rem.n+1,rem.bin+"1"));
-    //     }
+    
+    public static void printBinaries(int n)
+    {
+        LinkedList<Pair> queue=new LinkedList<>();
+        queue.add(new Pair(1,"1"));
+        while(queue.size()>0)
+        {
+            Pair rem=queue.removeFirst();
+            if(rem.n==n)
+            {
+                break;
+            }
+            System.out.println(rem.n+" -> "+rem.bin);
+            queue.addLast(new Pair(2 * rem.n,rem.bin+"0"));
+            queue.addLast(new Pair(2 * rem.n+1,rem.bin+"1"));
+        }
         
-    // }
+    }
+    private static class IPair{
+        Node node;
+        boolean print=false;
+        boolean lcall=false;
+        boolean rcall=false;
+        public IPair(Node node)
+        {
+            this.node=node;
+        }
+    }
+    public void preordIter(){
+
+        LinkedList<IPair> stack=new LinkedList<>();
+        stack.addFirst(new IPair(root));
+       
+
+        while(stack.size()>0){
+            IPair tp=stack.getFirst();
+            if(tp.node==null)
+            {
+                stack.removeFirst();
+                continue;
+            }
+            if(tp.print==false)
+            {
+                tp.print=true;
+                System.out.print(tp.node.data+" ");
+            }else if(tp.lcall==false)
+            {
+                tp.lcall=true;
+                stack.addFirst(new IPair(tp.node.left));
+            }else if(tp.rcall==false)
+            {   
+                tp.rcall=true;
+                stack.addFirst(new IPair(tp.node.right));
+
+            }else{
+                stack.removeFirst();
+            }
+        }
+        System.out.println(".");
+    }
+    public void postordIter(){
+
+        LinkedList<IPair> stack=new LinkedList<>();
+        stack.addFirst(new IPair(root));
+       
+
+        while(stack.size()>0){
+            IPair tp=stack.getFirst();
+            if(tp.node==null)
+            {
+                stack.removeFirst();
+                continue;
+            }
+            if(tp.lcall==false)
+            {
+                tp.lcall=true;
+                stack.addFirst(new IPair(tp.node.left));
+            }else if(tp.rcall==false)
+            {   
+                tp.rcall=true;
+                stack.addFirst(new IPair(tp.node.right));
+
+            }else if(tp.print==false)
+            {
+                tp.print=true;
+                System.out.print(tp.node.data+" ");
+            }else{
+                stack.removeFirst();
+            }
+        }
+        System.out.println(".");
+    }
+    public void inOrdIter(){
+
+        LinkedList<IPair> stack=new LinkedList<>();
+        stack.addFirst(new IPair(root));
+       
+
+        while(stack.size()>0){
+            IPair tp=stack.getFirst();
+            if(tp.node==null)
+            {
+                stack.removeFirst();
+                continue;
+            }
+            if(tp.rcall==false)
+            {   
+                tp.rcall=true;
+                stack.addFirst(new IPair(tp.node.right));
+
+            }else if(tp.print==false)
+            {
+                tp.print=true;
+                System.out.print(tp.node.data+" ");
+            }else if(tp.lcall==false)
+            {
+                tp.lcall=true;
+                stack.addFirst(new IPair(tp.node.left));
+            }else{
+                stack.removeFirst();
+            }
+        }
+        System.out.println(".");
+    }
+    
+    private static class Pair{
+        int n;
+        String bin="";
+        Pair(int n,String bin)
+        {
+            this.n=n;
+            this.bin=bin;
+        }
+    }
     public static void main(String args[])
     {
         BinaryTree tree=new BinaryTree();
@@ -251,7 +358,10 @@ public class BinaryTree {
         // tree.preo();
         // tree.postorder();
         // tree.inorder();
-        tree.levelo();
+        // tree.levelo();
+        tree.preordIter();
+        tree.postordIter();
+        tree.inOrdIter();
         //50 true 25 true 12 false true 20 false false true 37 true 30 false false false true 75 true 62 false false true 87 false false
     }
 
