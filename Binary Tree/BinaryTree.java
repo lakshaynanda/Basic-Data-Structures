@@ -15,10 +15,12 @@ public class BinaryTree {
     }
     private Node construct(Scanner scn,Node parent,boolean ilc)
     {   
+        
         if(parent==null)
         {
             System.out.println("Enter the data for root");
         }
+
         else{
             if(ilc)
             {
@@ -362,6 +364,9 @@ public class BinaryTree {
         tree.preordIter();
         tree.postordIter();
         tree.inOrdIter();
+
+
+
         //50 true 25 true 12 false true 20 false false true 37 true 30 false false false true 75 true 62 false false true 87 false false
     }
 
