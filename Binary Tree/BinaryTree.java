@@ -225,6 +225,8 @@ public class BinaryTree {
             if(rem.n==n)
             {
                 break;
+
+                
             }
             System.out.println(rem.n+" -> "+rem.bin);
             queue.addLast(new Pair(2 * rem.n,rem.bin+"0"));
@@ -348,6 +350,7 @@ public class BinaryTree {
             this.bin=bin;
         }
     }
+    
     public static void main(String args[])
     {
         BinaryTree tree=new BinaryTree();
