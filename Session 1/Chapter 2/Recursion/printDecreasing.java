@@ -11,7 +11,7 @@ public class Main {
     }
 
     public static void printDecreasing(int n){
-        if(n <= 0) {
+        if(n == 0) {
             return;
         }
         System.out.println(n);
