@@ -22,10 +22,17 @@ public class Main {
         if (idx == arr.length) {
             return -1;
         }
-        int fin = firstIndex(arr, idx + 1, x);
+        // BAD APPROACH
+        // int fin = firstIndex(arr, idx + 1, x);
+        // if (arr[idx] == x) {
+        //     return idx;
+        // } else {
+        //     return fin;
+        // }
         if (arr[idx] == x) {
             return idx;
         } else {
+            int fin = firstIndex(arr, idx + 1, x);
             return fin;
         }
     }
