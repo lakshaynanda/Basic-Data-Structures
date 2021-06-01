@@ -14,26 +14,19 @@ public class Main {
             arr[i] = sc.nextInt();
         }
         int x = sc.nextInt();
-        int fi = firstIndex(arr, 0, x);
-        System.out.println(fi);
+        int li = lastIndex(arr, arr.length-1, x);
+        System.out.println(li);
     }
 
-    public static int firstIndex(int[] arr, int idx, int x){
-        if (idx == arr.length) {
+    public static int lastIndex(int[] arr, int idx, int x){
+        if(idx == 0) {
             return -1;
         }
-        // BAD APPROACH BECAUSE RETURNING INDEX ON POST PART SO EXTRA ITERATION OF TRAVERSING UPWARDS
-        // int fin = firstIndex(arr, idx + 1, x);
-        // if (arr[idx] == x) {
-        //     return idx;
-        // } else {
-        //     return fin;
-        // }
         if (arr[idx] == x) {
             return idx;
         } else {
-            int fin = firstIndex(arr, idx + 1, x);
-            return fin;
+            int li = lastIndex(arr, idx - 1, x);
+            return li;
         }
     }
 
